@@ -1,7 +1,7 @@
 import os, streams, strutils # Required for laapatch
 import winim # Required for resolutions
 
-proc laapatch(path: cstring): cstring {.cdecl, exportc, dynlib.} =
+proc laapatch(path: cstring) {.cdecl, exportc, dynlib.} =
   var fs: FileStream = newFileStream($path, fmReadWriteExisting)
   fs.setPosition(parseHexInt("00000146"))
   fs.write(byte(0x2E))
