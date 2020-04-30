@@ -10,7 +10,7 @@ proc laapatch(path: cstring) {.cdecl, exportc, dynlib.} =
 # This should be outsourced later (have a look at the resolutions module in BF2142Unlocker project)
 proc getAvailableResolutions(): seq[tuple[width, height: uint]] =
   var dm: DEVMODE # = [0]
-  dm.dmSize = cast[WORD](sizeof((dm)))
+  dm.dmSize = cast[WORD](sizeof(dm))
   var iModeNum: cint = 0
   while EnumDisplaySettings(nil, iModeNum, addr(dm)) != 0:
     if dm.dmPelsWidth >= 800 and dm.dmDisplayFrequency >= 60 and dm.dmBitsPerPel == 32 and
